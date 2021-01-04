@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `My Kinda Tech by m3-bit`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `m3-bit`,
+      summary: `iOS Developer / Tranlsator who loves modern exciting art and music`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `This is a blog to share what I have learned through my developer / translation works. I just hope these articles help you understand reading codes and get interested.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `bit_m3`,
     },
   },
   plugins: [
