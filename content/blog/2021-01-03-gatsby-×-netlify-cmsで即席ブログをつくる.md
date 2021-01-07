@@ -23,18 +23,24 @@ Mac BigSur
 
 まずは下記コマンドをターミナルで実行し[gatsby-cli](https://www.npmjs.com/package/gatsby-cli)をインストールします。
 
-`npm install -g gatsby-cli`
+```shell
+npm install -g gatsby-cli
+```
 
-そしてプロジェクトを作るディレクトリに移動し、\
+そしてプロジェクトを作るディレクトリに移動し、
 プロジェクト名を指定してスターターブログをダウンロードしてきます。
 
-`cd <プロジェクトディレクトリ>
-gatsby new <プロジェクト名> https://github.com/gatsbyjs/gatsby-starter-blog`
+```shell
+cd <プロジェクトディレクトリ>
+gatsby new <プロジェクト名> https://github.com/gatsbyjs/gatsby-starter-blog
+```
 
 プロジェクトに移動して、開発サーバを立ち上げます。
 
-`cd <プロジェクト名>
-gatsby develop`
+```shell
+cd <プロジェクト名>
+gatsby develop
+```
 
 http://localhost:8000
 
@@ -44,7 +50,9 @@ http://localhost:8000
 
 ここにNetlify CMSのプラグインを追加します。
 
-`npm install netlify-cms-app gatsby-plugin-netlify-cms`
+```shell
+npm install netlify-cms-app gatsby-plugin-netlify-cms
+```
 
 でプラグインを追加
 
@@ -109,11 +117,11 @@ collections:
 
 <https://github.com/new> に移動して、Repository name（レポジトリ名）を入力して、公開設定Public（みんなに見られる）またはPrivate（自分だけ見れる）を選び、Create Repositoryボタンを押します。
 
-![](https://m3bit.files.wordpress.com/2021/01/screen-shot-2021-01-03-at-5.18.08.png?w=500 "Creating GitHub Repository")
+![](https://m3bit.files.wordpress.com/2021/01/screen-shot-2021-01-03-at-5.18.08.png?w=700 "Creating GitHub Repository")
 
 生成されたURLをコピーしておきます。
 
-![](https://m3bit.files.wordpress.com/2021/01/screen-shot-2021-01-03-at-5.19.17.png?w=500 "GitHub Repository URL")
+![](https://m3bit.files.wordpress.com/2021/01/screen-shot-2021-01-03-at-5.19.17.png?w=700 "GitHub Repository URL")
 
 再びターミナルに戻り、gitレポジトリにプロジェクトをプッシュします。
 
