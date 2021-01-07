@@ -4,7 +4,7 @@ date: 2021-01-02T23:32:56.547Z
 description: GatsbyのブログコンテンツをNetlify CMSで管理する方法
 ---
 CMSといえばWordPress一筋だったんですが、最近ヘッドレスCMSがどんどん増えてきました。\
-やっぱりいろいろなフレームワークに乗り換えやすくなるという点で、こっちを選ぶ傾向が強くなってきました（個人的にだけやけど）。
+やっぱりいろいろなフレームワークに乗り換えやすくなるという点で、こっちを選ぶ傾向が強くなってきました（個人的にやけど）。
 
 最近Gatsby気に入っているので、今回はGatsbyとNetlify CMSを連携したブログを作りたいと思います。
 
@@ -17,73 +17,112 @@ Mac BigSur
 * GitHubのアカウントを作っておく
 * Netlify CMSのアカウントを作っておく
 * Node.jsをインストールしておく
+* 開発用エディタをインストールしておく（お好みで！自分はVS Code使ってます）
 
 ## Gatsbyのインストール
 
-まずは下記コマンドを実行します。
+まずは下記コマンドをターミナルで実行し[gatsby-cli](https://www.npmjs.com/package/gatsby-cli)をインストールします。
 
-```shell
-npm install -g gatsby-cli
-```
+`npm install -g gatsby-cli`
 
-``
+そしてプロジェクトを作るディレクトリに移動し、\
+プロジェクト名を指定してスターターブログをダウンロードしてきます。
 
-そしてプロジェクトディレクトリに移動し、
+`cd <プロジェクトディレクトリ>
+gatsby new <プロジェクト名> https://github.com/gatsbyjs/gatsby-starter-blog`
 
-```shell
-gatsby new <ブログのディレクトリ名> https://github.com/gatsbyjs/gatsby-starter-blog
-```
+プロジェクトに移動して、開発サーバを立ち上げます。
 
-cd <名前>
+`cd <プロジェクト名>
+gatsby develop`
 
-で移動して
-
-```shell
-gatsby develop
-```
-
-
+http://localhost:8000
 
 でサイトがスタートします。
 
-```shell
-npm i netlify-cms-app gatsby-plugin-netlify-cms
-```
+## Netlify CMSプラグインをインストールする
+
+ここにNetlify CMSのプラグインを追加します。
+
+`npm install netlify-cms-app gatsby-plugin-netlify-cms`
 
 でプラグインを追加
 
-static > adminフォルダ > config.ymlを作成します。
+フォルダ **static** に新しいフォルダ **admin** を追加します。\
+その下にファイル **config.yml** を作成します。
 
-![](https://m3bit.files.wordpress.com/2021/01/screen-shot-2021-01-03-at-5.08.51.png?w=200)
+![gatsby](https://m3bit.files.wordpress.com/2021/01/screen-shot-2021-01-03-at-5.08.51.png?w=300 "folder_structure")
 
-ソースはこんな感じ
+ここで何をするかというと、GitHubとの連携、フォルダディレクトリの指定、そしてコンテンツを作成するスキーマを生成していきます。\
+後でカスタマイズできるので、ここではとりあえずコピっておけばOK。
 
-backend: name: git-gateway branch: master\
-media_folder: "static/img"public_folder : "/img"\
-collections: - name: "Blog" label: "Blog" folder: "content/blog" create: true slug: "{{year}}-{{month}}-{{day}}-{{slug}}" editor: preview: false fields: - {label: "Title", name: "title", widget: "string"} - {label: "Publish Date", name: "date", widget: "datetime"} - {label: "Description", name: "description", widget: "string"} - {label: "Body", name: "body", widget: "markdown"}
+```javascript
+backend:
+  name: git-gateway
+  branch: master
 
-そしてgatsby-config.jsに移動して、\`gatsby-plugin-netlify-cms\`,を追加します。
+media_folder: "static/img"
+public_folder : "/img"
 
-先にGitHubでレポジトリを作りましょう！
+collections:
+  - name: "Blog" 
+    label: "Blog"
+    folder: "content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"} 
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "description", widget: "string"} 
+      - {label: "Body", name: "body", widget: "markdown"}
+```
 
-https://github.com/new
+そして**gatsby-config.js**に移動して、**\`gatsby-plugin-netlify-cms\`,**を追加します。
 
-に移動して、Repository name（レポジトリ名）を入力して、PublicまたはPrivateを選び、Create Repositoryボタンを押します。
+```javascript
+    // 上にもいろいろ
+    `gatsby-plugin-feed`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Gatsby Starter Blog`,
+        short_name: `GatsbyJS`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `content/assets/gatsby-icon.png`,
+      },
+    },
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-netlify-cms`, // ここに追加
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    // `gatsby-plugin-offline`,
+  ],
+}
+```
 
-![](https://m3bit.files.wordpress.com/2021/01/screen-shot-2021-01-03-at-5.18.08.png?w=300)
+## GitHubでレポジトリを作る
 
-URLをコピっておきます。
+<https://github.com/new> に移動して、Repository name（レポジトリ名）を入力して、公開設定Public（みんなに見られる）またはPrivate（自分だけ見れる）を選び、Create Repositoryボタンを押します。
 
-![](https://m3bit.files.wordpress.com/2021/01/screen-shot-2021-01-03-at-5.19.17.png?w=300)
+![](https://m3bit.files.wordpress.com/2021/01/screen-shot-2021-01-03-at-5.18.08.png?w=500 "Creating GitHub Repository")
 
-そしてターミナルに戻って、gitレポジトリにプッシュします。
+生成されたURLをコピーしておきます。
 
-git init\
-git add README.md\
-git commit -m "first commit"\
-git brach -M main\
-git remote add origin "さっきのURL"\
-git push -u origin main
+![](https://m3bit.files.wordpress.com/2021/01/screen-shot-2021-01-03-at-5.19.17.png?w=500 "GitHub Repository URL")
+
+再びターミナルに戻り、gitレポジトリにプロジェクトをプッシュします。
+
+`git init // Gitの初期化`\
+`git add README.md // READMEの追加`\
+`git commit -m "first commit" // first commitのコメントでコミット`\
+`git branch -M master // masterブランチへコミット`\
+`git remote add origin "さっきのURL" // リモートレポジトリを追加`\
+`git push -u origin master // masterブランチへプッシュする`
 
 更新してみると、ふむふむできております。
 
