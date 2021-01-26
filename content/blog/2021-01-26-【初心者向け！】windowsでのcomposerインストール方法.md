@@ -13,14 +13,34 @@ description: Composerインストール方法
 
 Developer Modeというチェックボックスがありますが、これをチェックするとアンインストーラーがパッケージに含まれません。
 
-特に理由がない場合はチェックなしで進んでOKです。Nextをクリックします。
+基本的にはチェックなしで進んでOKです。Nextをクリックします。
 
-![composer_installation_options](/img/composer2.png "composer_setup_02")
+![composer_installation_options](/img/composer2.png "composer_setup_2")
 
-![](/img/composer3.png?w=300 "composer_install_03")
 
-![](/img/composer4.png?w=300 "composer_install_04")
 
-![](/img/composer5.png?w=300 "composer_setup_05")
+次は使用するPHPのパスを指定します。自動的にパスを指定してくれますが、複数インストールしてたりする場合はここで変更して、Nextで進みます。
 
-![completing composer setup](/img/composer6.png?w=300 "composer_setup_06")
+![composer_settings_check](/img/composer3.png "composer_install_3")
+
+次にプロキシの設定です。プロキシを経由する場合はチェックして、Nextをクリック。
+
+![composer_proxy_settings](/img/composer4.png "composer_setup_4")
+
+最終確認画面です。PHPバージョンとPHPのパス、プロキシ設定が表示されているので、ミスってる場合は戻って設定し直しましょう。
+
+問題なければInstallをクリックするとインストールが始まります。
+
+![composer_ready_to_install](/img/composer5.png "composer_setup_5")
+
+インストールが完了したら、下記の画面になります。続けてドキュメンテーションを開きたい場合は、チェックボックスにチェックを入れてFinishを押します。
+
+![completing composer setup](/img/composer6.png "composer_setup_6")
+
+以上で、Composerのセットアップは完了です！！
+
+コマンドプロンプトで
+
+`composer -v`
+
+が使えるか確認してみてください！👍
