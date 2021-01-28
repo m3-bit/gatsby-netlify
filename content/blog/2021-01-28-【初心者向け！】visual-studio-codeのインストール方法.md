@@ -30,8 +30,6 @@ VSコードのインストール方法の解説なんですが、現在ドイツ
 
 ![vscode_zeil-order_wählen](/img/vscode3.png "vscode_setup_3")
 
-
-
 - - -
 
 ## 4. スタートアップメニューへの追加
@@ -40,21 +38,16 @@ VSコードのインストール方法の解説なんですが、現在ドイツ
 
 - - -
 
+![vscode_zusätliche_aufgaben_auswählen](/img/vscode5.png "vscode_setup_5")
 
+- - -
 
----
+![vscode_bereit_zur_installation](/img/vscode6.png "vscode_setup_6")
 
+- - -
 
+![vscode_beenden_des_visual_studio_code_setup_assistenten](/img/vscode7.png "vscode_setup_7")
 
+- - -
 
----
-
-
-
-
----
-
-
-
-
----
+- - -
