@@ -5,17 +5,20 @@ description: コントローラーを作る
 ---
 ## Artisanでコントローラーを作る
 
-コントローラーを作るコマンド↓\
-最後はコントローラー名で、ここではPagesControllerという名前でファイルが作られます。
+コントローラーを作るコマンド↓
 
 ```shell
 php artisan make:controller PagesController
 ```
 
+ちなみに最後がコントローラー名で、ここではPagesControllerという名前でファイルが作られます。
+
 `Controller created successfully.`
 
 と出ればOK。**app** → **Http** → **Controllers** の中に**PagesController**がひっそりいてるはずです。\
-もちろん手動で作ってもいいんですが、名前空間とかを自動で生成してくれるのでArtisan使う方が効率的です。
+もちろんファイルは手動で作ってもいいんですが、名前空間とかを自動で生成してくれるのでArtisan使って作る方が効率的です。
+
+こんなコントローラーが生成されます。
 
 ```php
 <?php
@@ -30,8 +33,8 @@ class PagesController extends Controller
 }
 ```
 
-**index**という関数を作っておきます。\
-**views** → **pages**(これは自分で作った) の中に **m3-bit.blade.php**というViewがあるとして、これを呼び出す関数にします。
+ここには**index**という関数を作っておきます。\
+**views** フォルダ → **pages**(これは自分で作った) フォルダの中に **m3-bit.blade.php**というViewがあるとして、これを呼び出す関数にします。
 
 ```php
     public function index() {
@@ -39,14 +42,13 @@ class PagesController extends Controller
     }
 ```
 
-web.phpに戻って、まずPagesControllerを使う宣言をします。
-ちなみに、前のバージョンだったらこの作業要らんかったっぽい。
+**web.php**に戻って、まず**PagesController**を使う宣言をします。
 
 ```php
 use App\Http\Controllers\PagesController;
 ```
 
-そして、**/pages**にアクセスされたときに、**index**関数を呼び出して、**m3-bit.blade.php** のビューを表示できるようになります。
+そして、**/pages**にアクセスされたときに、**index**関数を呼び出して、**m3-bit.blade.php** のビューを表示できるようにします。以上！！
 
 ```php
 Route::get('/pages', [PagesController::class, 'index']);
