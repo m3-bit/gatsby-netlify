@@ -48,6 +48,5 @@ VSコードのインストール方法の解説なんですが、現在ドイツ
 
 ![vscode_beenden_des_visual_studio_code_setup_assistenten](/img/vscode7.png "vscode_setup_7")
 
-- - -
-
-- - -
+以上でインストール完了です！
+チェック状態のまま**Fertigstellen**をクリックすれば、VSコードが起動します。
