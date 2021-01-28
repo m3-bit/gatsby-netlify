@@ -39,7 +39,6 @@ const BlogIndex = ({ data, location }) => {
                 itemType="http://schema.org/Article"
               >
                 <header>
-                <script data-ad-client="ca-pub-4689750541588842" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                   <h2>
                     <Link to={post.fields.slug} itemProp="url">
                       <span itemProp="headline">{title}</span>
