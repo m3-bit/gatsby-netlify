@@ -42,5 +42,3 @@ description: VSコードを日本語化する方法！
 Yesをクリックして再起動すれば、日本語の設定完了です！
 
 ![vscode_restart_popup](/img/vscode_la_setting_5.png "vscode_la_setting_5")
-
-- - -
